@@ -116,7 +116,7 @@ section {
 }
 
 .button.secondary:hover {
-    background-color: #0008B; /* Darker gray */
+    background-color: #00007d; /* Darker gray */
     transform: translateY(-2px);
 }
 
@@ -159,6 +159,7 @@ footer {
     border-top: 1px solid #dee2e6;
 
 }
+
 
 
 
