@@ -56,7 +56,7 @@ nav ul li a {
 
 nav ul li a:hover,
 nav ul li a.active { /* 'active' class can be added by JS for current page */
-    background-color: #0056b3; /* Darker blue on hover/active */
+    background-color: #9840bf; /* Darker blue on hover/active */
     color: white;
 }
 
@@ -106,7 +106,7 @@ section {
 }
 
 .button.primary:hover {
-    background-color: #218838; /* Darker green */
+    background-color: #f6090b; /* Darker green */
     transform: translateY(-2px);
 }
 
@@ -116,7 +116,7 @@ section {
 }
 
 .button.secondary:hover {
-    background-color: #5a6268; /* Darker gray */
+    background-color: #deea15; /* Darker gray */
     transform: translateY(-2px);
 }
 
@@ -129,4 +129,5 @@ footer {
     border-top: 1px solid #dee2e6;
 
 }
+
 
