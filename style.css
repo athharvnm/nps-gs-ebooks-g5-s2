@@ -101,22 +101,52 @@ section {
 }
 
 .button.primary {
-    background-color: #28a745; /* Green */
+    background-color: #800080; /* Green */
     color: white;
 }
 
 .button.primary:hover {
-    background-color: #f6090b; /* Darker green */
+    background-color: #301934; /* Darker green */
     transform: translateY(-2px);
 }
 
 .button.secondary {
-    background-color: #6c757d; /* Gray */
+    background-color: #0000FF; /* Gray */
     color: white;
 }
 
 .button.secondary:hover {
-    background-color: #deea15; /* Darker gray */
+    background-color: #0008B; /* Darker gray */
+    transform: translateY(-2px);
+}
+
+.button.tertiary {
+    background-color: #00FF00; /* Gray */
+    color: white;
+}
+
+.button.tertiary:hover {
+    background-color: #013220; /* Darker gray */
+    transform: translateY(-2px);
+}
+
+.button.quaternary {
+    background-color: #FFFF00; /* Gray */
+    color: white;
+}
+
+.button.quaternary:hover {
+    background-color: #8B8000; /* Darker gray */
+    transform: translateY(-2px);
+}
+
+.button.quinary {
+    background-color: #FF0000; /* Gray */
+    color: white;
+}
+
+.button.quinary:hover {
+    background-color: #8B0000; /* Darker gray */
     transform: translateY(-2px);
 }
 
@@ -129,5 +159,6 @@ footer {
     border-top: 1px solid #dee2e6;
 
 }
+
 
 
