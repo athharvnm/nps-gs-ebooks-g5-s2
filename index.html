@@ -3,69 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NPS KRM GS Ebooks (Term 2)</title>
-    
+    <title>NPS KRM GS Ebooks (Sem 2)</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     
     <header>
-        <h1>General Science Ebooks</h1>
-        <p>Your place to access the Term 2 ebooks for Grade 5, NPS KRM</p>
+        <h1>🔬 General Science E-books</h1>
+        <p>Your place to access the Sem 2 e-books for Grade 5, NPS KRM</p>
     </header>
 
     <nav>
         <ul>
+            <li><a href="#home" class="active">Home</a></li>
             <li><a href="All%20chapters/5.-Grade5-Simple-Machines_1.html">Simple Machines</a></li>
             <li><a href="All%20chapters/6.-Grade-5-Human-Body-Skeletal-System.html">Skeletal System</a></li>
             <li><a href="All%20chapters/7.-Grade5-Human-Body-Nervous-System.html">Nervous System</a></li>
             <li><a href="All%20chapters/8.-Grade5-Elements-and-Compounds.html">Elements & Compounds</a></li>
-            <li><a href="All%20chapters/9.-Grade5-Animals-That-Live-In-Water.html">Animals That Live in Water</a></li>
+            <li><a href="All%20chapters/9.-Grade5-Animals-That-Live-In-Water.html">Aquatic Animals</a></li>
         </ul>
     </nav>
 
     <main>
         <section class="intro">
-            <h2>Welcome to the NPS KRM GS 5th Grade Term 2 Ebooks Website (unofficial)</h2>
+            <h2>Welcome to Grade 5 General Science! 🎓</h2>
             <p>
-                This project is designed to help NPS KRM fifth graders access Term 2 ebooks. 
-                Use the navigation above to explore different aspects and documentation of the project.
+                This page helps NPS KRM fifth graders explore Sem 2 science topics. 
+                Click on any chapter below to start your learning journey through fascinating topics 
+                like simple machines, human anatomy, chemistry, and marine biology!
             </p>
         </section>
-        
+
+        <!-- Modern Card Carousel for Chapters -->
+        <section>
+            <h3 style="text-align: center; margin-bottom: 32px;">📚 Explore All Chapters</h3>
+            
+            <div class="link-carousel">
+                <div class="carousel-container" id="carousel">
+                    
+                    <div class="carousel-card">
+                        <div style="font-size: 48px; margin-bottom: 16px;">⚙️</div>
+                        <h3>Simple Machines</h3>
+                        <p>Discover how levers, pulleys, and gears make work easier in our everyday lives.</p>
+                        <a href="All%20chapters/5.-Grade5-Simple-Machines_1.html">Start Learning →</a>
+                    </div>
+
+                    <div class="carousel-card">
+                        <div style="font-size: 48px; margin-bottom: 16px;">🦴</div>
+                        <h3>Skeletal System</h3>
+                        <p>Learn about the amazing framework of bones that supports and protects your body.</p>
+                        <a href="All%20chapters/6.-Grade-5-Human-Body-Skeletal-System.html">Start Learning →</a>
+                    </div>
+
+                    <div class="carousel-card">
+                        <div style="font-size: 48px; margin-bottom: 16px;">🧠</div>
+                        <h3>Nervous System</h3>
+                        <p>Explore how your brain and nerves control everything you think, feel, and do.</p>
+                        <a href="All%20chapters/7.-Grade5-Human-Body-Nervous-System.html">Start Learning →</a>
+                    </div>
+
+                    <div class="carousel-card">
+                        <div style="font-size: 48px; margin-bottom: 16px;">⚗️</div>
+                        <h3>Elements & Compounds</h3>
+                        <p>Dive into the building blocks of matter and understand what everything is made of.</p>
+                        <a href="All%20chapters/8.-Grade5-Elements-and-Compounds.html">Start Learning →</a>
+                    </div>
+
+                    <div class="carousel-card">
+                        <div style="font-size: 48px; margin-bottom: 16px;">🐠</div>
+                        <h3>Aquatic Animals</h3>
+                        <p>Discover the incredible creatures that live in oceans, rivers, and lakes around the world.</p>
+                        <a href="All%20chapters/9.-Grade5-Animals-That-Live-In-Water.html">Start Learning →</a>
+                    </div>
+
+                </div>
+                
+                <div class="carousel-dots" id="dots">
+                    <span class="dot active" onclick="scrollToCard(0)"></span>
+                    <span class="dot" onclick="scrollToCard(1)"></span>
+                    <span class="dot" onclick="scrollToCard(2)"></span>
+                    <span class="dot" onclick="scrollToCard(3)"></span>
+                    <span class="dot" onclick="scrollToCard(4)"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Access Section -->
         <section class="action">
-            <h3>Ready to Dive In?</h3>
-            <p>
-                You can explore the chapters here:
+            <h3>🚀 Quick Access to Chapters</h3>
+            <p style="margin-bottom: 24px;">
+                Jump directly to any chapter with these convenient buttons:
             </p>
-            </a>
-            <a href="All%20chapters/5.-Grade5-Simple-Machines_1.html" class="button primary">
-                Simple Machines
-            <a href="All%20chapters/6.-Grade-5-Human-Body-Skeletal-System.html" class="button secondary">
-                Human Body: Skeletal System
-            <a href="All%20chapters/7.-Grade5-Human-Body-Nervous-System.html" class="button tertiary">
-                Human Body: Nervous System
-            <a href="All%20chapters/8.-Grade5-Elements-and-Compounds.html" class="button quaternary">
-                Elements and Compounds
-            <a href="All%20chapters/9.-Grade5-Animals-That-Live-In-Water.html" class="button quinary">
-                Animals That Live in Water
-            </a>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;">
+                <a href="All%20chapters/5.-Grade5-Simple-Machines_1.html" class="button primary">
+                    ⚙️ Simple Machines
+                </a>
+                <a href="All%20chapters/6.-Grade-5-Human-Body-Skeletal-System.html" class="button secondary">
+                    🦴 Skeletal System
+                </a>
+                <a href="All%20chapters/7.-Grade5-Human-Body-Nervous-System.html" class="button tertiary">
+                    🧠 Nervous System
+                </a>
+                <a href="All%20chapters/8.-Grade5-Elements-and-Compounds.html" class="button quaternary">
+                    ⚗️ Elements & Compounds
+                </a>
+                <a href="All%20chapters/9.-Grade5-Animals-That-Live-In-Water.html" class="button quinary">
+                    🐠 Aquatic Animals
+                </a>
+            </div>
+        </section>
+
+        <!-- Study Tips Section -->
+        <section style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);">
+            <h3>💡 Study Tips</h3>
+            <div class="link-grid">
+                <div class="link-card">
+                    <h4>📖 Read Actively</h4>
+                    <p>Take notes and highlight important concepts as you go through each chapter.</p>
+                </div>
+                <div class="link-card">
+                    <h4>🎯 Set Goals</h4>
+                    <p>Complete one chapter at a time and review what you've learned before moving on.</p>
+                </div>
+                <div class="link-card">
+                    <h4>❓ Ask Questions</h4>
+                    <p>Don't hesitate to ask your teacher if something isn't clear. Curiosity leads to learning!</p>
+                </div>
+            </div>
         </section>
     </main>
     
     <footer>
-        <p>&copy; 2025 NPS and NAFL.</p>
-        <p>Code is licensed under the MIT License.</p>
+        <p style="font-size: 1.1em; margin-bottom: 8px;">📚 NPS KRM Grade 5 Science - Term 2</p>
+        <p>&copy; 2025 NPS and NAFL. Educational use only.</p>
+        <p style="margin-top: 8px; opacity: 0.7;">Code is licensed under the MIT License.</p>
     </footer>
 
+    <script>
+        // Carousel functionality
+        const carousel = document.getElementById('carousel');
+        const dots = document.querySelectorAll('.dot');
+        
+        function scrollToCard(index) {
+            const cards = document.querySelectorAll('.carousel-card');
+            if (cards[index]) {
+                cards[index].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+            }
+        }
+        
+        // Update active dot on scroll
+        carousel.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.carousel-card');
+            const scrollLeft = carousel.scrollLeft;
+            const cardWidth = cards[0].offsetWidth + 24; // card width + gap
+            const activeIndex = Math.round(scrollLeft / cardWidth);
+            
+            dots.forEach((dot, index) => {
+                if (index === activeIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        });
+
+        // Add smooth scroll behavior for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
