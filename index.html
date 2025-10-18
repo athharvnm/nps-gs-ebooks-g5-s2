@@ -8,11 +8,31 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔬</text></svg>">
+    
+    <style>
+        /* Fix Study Tips cards - remove hover effects and arrows */
+        .study-tips-section .link-card {
+            cursor: default;
+        }
+        
+        .study-tips-section .link-card::after {
+            display: none !important;
+        }
+        
+        .study-tips-section .link-card:hover {
+            transform: none;
+            box-shadow: var(--shadow-sm);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+    </style>
 </head>
 <body>
     
     <header>
-        <h1> General Science E-books</h1>
+        <h1>🔬 General Science E-books</h1>
         <p>Your place to access the Sem 2 e-books for Grade 5, NPS KRM</p>
     </header>
 
@@ -29,7 +49,7 @@
 
     <main>
         <section class="intro">
-            <h2>Welcome to Grade 5 General Science! </h2>
+            <h2>Welcome to Grade 5 General Science! 🎓</h2>
             <p>
                 This page helps NPS KRM fifth graders explore Sem 2 general science topics. 
                 Click on any chapter below to start your learning journey through fascinating topics 
@@ -85,7 +105,7 @@
                     <span class="dot active" onclick="scrollToCard(0)"></span>
                     <span class="dot" onclick="scrollToCard(1)"></span>
                     <span class="dot" onclick="scrollToCard(2)"></span>
-              </div>
+                </div>
             </div>
         </section>
 
@@ -115,7 +135,7 @@
         </section>
 
         <!-- Study Tips Section -->
-        <section style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);">
+        <section class="study-tips-section" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);">
             <h3>💡 Study Tips</h3>
             <div class="link-grid">
                 <div class="link-card">
@@ -138,6 +158,7 @@
         <p style="font-size: 1.1em; margin-bottom: 8px;">📚 NPS KRM Grade 5—General Science Sem 2</p>
         <p>&copy; 2025 NPS and NAFL. Educational use only.</p>
         <p style="margin-top: 8px; opacity: 0.7;">Code is licensed under the MIT License.</p>
+        <p style="margin-top: 12px; font-size: 0.9em; opacity: 0.8;">Built with ❤️ by Athharv N. M.</p>
     </footer>
 
     <script>
@@ -147,17 +168,38 @@
         
         function scrollToCard(index) {
             const cards = document.querySelectorAll('.carousel-card');
-            if (cards[index]) {
-                cards[index].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+            let cardIndex = 0;
+            
+            // Map dot clicks: dot 0 -> card 0, dot 1 -> card 2, dot 2 -> card 4
+            if (index === 0) {
+                cardIndex = 0;
+            } else if (index === 1) {
+                cardIndex = 2;
+            } else if (index === 2) {
+                cardIndex = 4;
+            }
+            
+            if (cards[cardIndex]) {
+                cards[cardIndex].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
             }
         }
         
-        // Update active dot on scroll
+        // Update active dot on scroll - improved logic for 5 cards with 3 dots
         carousel.addEventListener('scroll', () => {
             const cards = document.querySelectorAll('.carousel-card');
             const scrollLeft = carousel.scrollLeft;
             const cardWidth = cards[0].offsetWidth + 24; // card width + gap
-            const activeIndex = Math.round(scrollLeft / cardWidth);
+            const currentCard = Math.round(scrollLeft / cardWidth);
+            
+            // Map 5 cards to 3 dots: cards 0-1 = dot 0, cards 2-3 = dot 1, card 4 = dot 2
+            let activeIndex = 0;
+            if (currentCard <= 1) {
+                activeIndex = 0;
+            } else if (currentCard <= 3) {
+                activeIndex = 1;
+            } else {
+                activeIndex = 2;
+            }
             
             dots.forEach((dot, index) => {
                 if (index === activeIndex) {
@@ -181,6 +223,3 @@
     </script>
 </body>
 </html>
-
-
-
