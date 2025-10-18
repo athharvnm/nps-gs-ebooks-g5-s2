@@ -7,39 +7,12 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet>
-    <style>
-        /* Fix emoji colors */
-        header h1, h2 {
-            display: inline-block;
-        }
-        header h1::before {
-            content: '🔬 ';
-            filter: none !important;
-        }
-        .intro h2::after {
-            content: ' 🎓';
-            filter: none !important;
-        }
-        /* Remove arrows from study tips cards */
-        .study-tips-section .link-card::after {
-            display: none !important;
-        }
-        /* Make study tips cards non-interactive looking */
-        .study-tips-section .link-card {
-            cursor: default;
-        }
-        .study-tips-section .link-card:hover {
-            transform: none;
-            box-shadow: none;
-            border-color: rgba(255, 255, 255, 0.1);
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     
     <header>
-        <h1><span style="filter: none;">🔬</span> General Science E-books</h1>
+        <h1>🔬 General Science E-books</h1>
         <p>Your place to access the Sem 2 e-books for Grade 5, NPS KRM</p>
     </header>
 
@@ -56,7 +29,7 @@
 
     <main>
         <section class="intro">
-            <h2>Welcome to Grade 5 General Science! <span style="filter: none;">🎓</span></h2>
+            <h2>Welcome to Grade 5 General Science! 🎓</h2>
             <p>
                 This page helps NPS KRM fifth graders explore Sem 2 science topics. 
                 Click on any chapter below to start your learning journey through fascinating topics 
@@ -112,6 +85,8 @@
                     <span class="dot active" onclick="scrollToCard(0)"></span>
                     <span class="dot" onclick="scrollToCard(1)"></span>
                     <span class="dot" onclick="scrollToCard(2)"></span>
+                    <span class="dot" onclick="scrollToCard(3)"></span>
+                    <span class="dot" onclick="scrollToCard(4)"></span>
                 </div>
             </div>
         </section>
@@ -142,7 +117,7 @@
         </section>
 
         <!-- Study Tips Section -->
-        <section class="study-tips-section" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);">
+        <section style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);">
             <h3>💡 Study Tips</h3>
             <div class="link-grid">
                 <div class="link-card">
@@ -179,22 +154,12 @@
             }
         }
         
-        // Update active dot on scroll - improved logic for 5 cards with 3 dots
+        // Update active dot on scroll
         carousel.addEventListener('scroll', () => {
             const cards = document.querySelectorAll('.carousel-card');
             const scrollLeft = carousel.scrollLeft;
             const cardWidth = cards[0].offsetWidth + 24; // card width + gap
-            const currentCard = Math.round(scrollLeft / cardWidth);
-            
-            // Map 5 cards to 3 dots: cards 0-1 = dot 0, cards 2-3 = dot 1, card 4 = dot 2
-            let activeIndex = 0;
-            if (currentCard <= 1) {
-                activeIndex = 0;
-            } else if (currentCard <= 3) {
-                activeIndex = 1;
-            } else {
-                activeIndex = 2;
-            }
+            const activeIndex = Math.round(scrollLeft / cardWidth);
             
             dots.forEach((dot, index) => {
                 if (index === activeIndex) {
@@ -204,26 +169,6 @@
                 }
             });
         });
-
-        // Update scrollToCard function to handle 3 dots for 5 cards
-        const originalScrollToCard = scrollToCard;
-        scrollToCard = function(dotIndex) {
-            const cards = document.querySelectorAll('.carousel-card');
-            let cardIndex = 0;
-            
-            // Map dot clicks: dot 0 -> card 0, dot 1 -> card 2, dot 2 -> card 4
-            if (dotIndex === 0) {
-                cardIndex = 0;
-            } else if (dotIndex === 1) {
-                cardIndex = 2;
-            } else if (dotIndex === 2) {
-                cardIndex = 4;
-            }
-            
-            if (cards[cardIndex]) {
-                cards[cardIndex].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
-            }
-        };
 
         // Add smooth scroll behavior for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -238,3 +183,4 @@
     </script>
 </body>
 </html>
+
