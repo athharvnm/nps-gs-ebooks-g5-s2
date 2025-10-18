@@ -1,202 +1,454 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f9fa; /* Lighter background */
-    color: #343a40; /* Darker text */
-    text-align: center;
+/* Modern Design System - Variables for consistency */
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --dark-bg: #0f172a;
+    --card-bg: #1e293b;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --border-radius: 16px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(to bottom, #0f172a, #1e293b);
+    color: var(--text-primary);
+    min-height: 100vh;
+}
+
+/* Glassmorphism Header */
 header {
-    background-color: #9840bf; /* Primary Purple (Restored) */
-    color: white;
-    padding: 30px 0;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background: rgba(102, 126, 234, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
-    margin: 0;
-    font-size: 3em;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
 }
 
 header p {
-    font-size: 1.2em;
-    opacity: 0.9;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--text-secondary);
+    font-weight: 400;
 }
 
-/* Navigation Bar Styling */
+/* Modern Navigation with Pill Style */
 nav {
-    background-color: #343a40; /* Darker background for nav (Restored) */
-    padding: 10px 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 nav ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex; /* Horizontal layout for desktop */
+    display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Added: Allows items to wrap if they run out of space */
-}
-
-nav ul li {
-    margin: 0 15px;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
 nav ul li a {
-    color: white;
+    color: var(--text-secondary);
     text-decoration: none;
-    font-weight: bold;
-    padding: 5px 10px;
-    transition: color 0.3s ease, background-color 0.3s ease;
-    border-radius: 4px;
-    display: block; /* Added: Helps with mobile touch targets */
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 50px;
+    transition: var(--transition);
+    font-size: 0.95rem;
+    position: relative;
+    overflow: hidden;
+}
+
+nav ul li a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--primary-gradient);
+    opacity: 0;
+    transition: var(--transition);
+    z-index: -1;
+}
+
+nav ul li a:hover::before,
+nav ul li a.active::before {
+    opacity: 1;
 }
 
 nav ul li a:hover,
 nav ul li a.active {
-    background-color: #9840bf; /* Purple on hover/active (Restored) */
     color: white;
+    transform: translateY(-2px);
 }
 
+/* Main Content with Modern Cards */
 main {
-    max-width: 960px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 0 0 15px rgba(0,0,0,0.08);
-    border-radius: 8px;
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 40px 20px;
+}
+
+/* Section Styling */
+section {
+    background: rgba(30, 41, 59, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    padding: 40px;
+    margin-bottom: 30px;
+    transition: var(--transition);
+}
+
+section:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(102, 126, 234, 0.3);
 }
 
 h2 {
-    color: #007bff; /* Blue color (Restored) */
-    margin-bottom: 20px;
-    font-size: 2em;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
 }
 
 h3 {
-    color: #343a40;
-    margin-top: 40px;
-}
-
-section {
-    margin-bottom: 30px;
+    color: var(--text-primary);
+    margin: 32px 0 16px;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 .intro p {
-    font-size: 1.1em;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
     margin-bottom: 30px;
+    line-height: 1.8;
 }
 
-/* Button Styling (Colors Restored) */
+/* Modern Button System */
 .button {
-    display: inline-block;
-    padding: 12px 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 32px;
     text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    margin: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    font-weight: 600;
+    transition: var(--transition);
+    margin: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.button:hover::before {
+    transform: translateX(0);
+}
+
+.button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
 }
 
 .button.primary {
-    background-color: #800080; /* Purple (Restored) */
+    background: var(--primary-gradient);
     color: white;
-}
-
-.button.primary:hover {
-    background-color: #301934; /* Darker Purple (Restored) */
-    transform: translateY(-2px);
 }
 
 .button.secondary {
-    background-color: #0000FF; /* Blue (Restored) */
+    background: var(--accent-gradient);
     color: white;
-}
-
-.button.secondary:hover {
-    background-color: #00007d; /* Darker Blue (Restored) */
-    transform: translateY(-2px);
 }
 
 .button.tertiary {
-    background-color: #00FF00; /* Green (Restored) */
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
     color: white;
-}
-
-.button.tertiary:hover {
-    background-color: #013220; /* Darker Green (Restored) */
-    transform: translateY(-2px);
 }
 
 .button.quaternary {
-    background-color: #FFFF00; /* Yellow (Restored) */
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     color: white;
-}
-
-.button.quaternary:hover {
-    background-color: #8B8000; /* Darker Yellow (Restored) */
-    color: white; /* Changed text color to white for better contrast on hover */
-    transform: translateY(-2px);
 }
 
 .button.quinary {
-    background-color: #FF0000; /* Red (Restored) */
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
     color: white;
 }
 
-.button.quinary:hover {
-    background-color: #8B0000; /* Darker Red (Restored) */
-    transform: translateY(-2px);
+/* CAROUSEL FOR HYPERLINKS - Modern Swipe Cards */
+.link-carousel {
+    position: relative;
+    overflow: hidden;
+    padding: 40px 20px;
+    margin: 40px 0;
 }
 
-footer {
-    margin-top: 60px;
+.carousel-container {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
     padding: 20px 0;
-    background-color: #e9ecef; /* Light gray footer */
-    font-size: 0.85em;
-    color: #6c757d;
-    border-top: 1px solid #dee2e6;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
 }
 
-/* =======================================
-   MEDIA QUERY FOR MOBILE RESPONSIVENESS
-   (This is the only section that was added)
-   =======================================
-*/
+.carousel-container::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-card {
+    flex: 0 0 320px;
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    padding: 32px;
+    scroll-snap-align: start;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--primary-gradient);
+    transform: scaleX(0);
+    transition: var(--transition);
+}
+
+.carousel-card:hover::before {
+    transform: scaleX(1);
+}
+
+.carousel-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(102, 126, 234, 0.5);
+    box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+}
+
+.carousel-card h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+}
+
+.carousel-card p {
+    color: var(--text-secondary);
+    margin: 16px 0;
+    line-height: 1.6;
+}
+
+.carousel-card a {
+    display: inline-flex;
+    align-items: center;
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.carousel-card a:hover {
+    color: #764ba2;
+    transform: translateX(4px);
+}
+
+/* Carousel Navigation Dots */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.dot.active {
+    background: var(--primary-gradient);
+    width: 32px;
+    border-radius: 5px;
+}
+
+/* Alternative: Grid Layout for Links */
+.link-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin: 40px 0;
+}
+
+.link-card {
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    padding: 32px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.link-card::after {
+    content: '→';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: rgba(102, 126, 234, 0.3);
+    transition: var(--transition);
+}
+
+.link-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(102, 126, 234, 0.5);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+}
+
+.link-card:hover::after {
+    color: #667eea;
+    transform: translateX(4px);
+}
+
+.link-card h4 {
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    font-size: 1.25rem;
+}
+
+.link-card p {
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+}
+
+.link-card a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.link-card a:hover {
+    color: #764ba2;
+}
+
+/* Footer with Gradient Border */
+footer {
+    margin-top: 80px;
+    padding: 32px 20px;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
+    border-top: 2px solid;
+    border-image: var(--primary-gradient) 1;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+/* Mobile Responsive */
 @media (max-width: 768px) {
-    
-    header h1 {
-        font-size: 2em;
-    }
-    
     header {
-        padding: 20px 0;
+        padding: 30px 20px;
     }
-
-    /* Core fix: Stack the navigation links vertically on small screens */
+    
     nav ul {
-        flex-direction: column; 
-        align-items: center;
-        padding: 10px 0;
-    }
-
-    nav ul li {
-        margin: 5px 0;
-        width: 90%; /* Use slightly less than 100% for mobile padding/margins */
-        text-align: center;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
     }
     
     nav ul li a {
-        padding: 10px; /* Increase padding for easier tapping */
+        display: block;
+        text-align: center;
+        padding: 12px;
     }
     
     main {
-        margin: 20px 10px;
-        padding: 15px;
+        margin: 30px auto;
+        padding: 20px 15px;
     }
+    
+    section {
+        padding: 24px;
+    }
+    
+    .carousel-card {
+        flex: 0 0 280px;
+    }
+    
+    .button {
+        width: 100%;
+        margin: 8px 0;
+    }
+}
+
+/* Smooth Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Loading State for Carousel */
+.carousel-container.loading {
+    opacity: 0.5;
+    pointer-events: none;
 }
