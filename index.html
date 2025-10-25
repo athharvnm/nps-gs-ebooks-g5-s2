@@ -141,6 +141,66 @@
             border-color: rgba(255, 255, 255, 0.08);
         }
         
+        /* Download Buttons Styling */
+        .download-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .download-btn.pdf {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+        }
+
+        .download-btn.ppsx {
+            background: linear-gradient(135deg, #f39c12 0%, #d68910 100%);
+            color: white;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .download-btn.pdf:hover {
+            border-color: #e74c3c;
+        }
+
+        .download-btn.ppsx:hover {
+            border-color: #f39c12;
+        }
+
+        .view-link {
+            display: inline-flex;
+            align-items: center;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 700;
+            margin-bottom: 16px;
+            gap: 6px;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .view-link:hover {
+            color: #764ba2;
+            transform: translateX(6px);
+        }
+        
         /* Mobile responsiveness for floating icons */
         @media (max-width: 768px) {
             .floating-icon {
@@ -170,6 +230,15 @@
             
             .floating-icon.center-left {
                 display: none;
+            }
+
+            .download-buttons {
+                flex-direction: column;
+            }
+
+            .download-btn {
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
@@ -220,35 +289,75 @@
                         <div style="font-size: 48px; margin-bottom: 16px;">⚙️</div>
                         <h3>Simple Machines</h3>
                         <p>Discover how levers, pulleys, and gears make work easier in our everyday lives.</p>
-                        <a href="All%20chapters/5.-Grade5-Simple-Machines_1.html">Start Learning →</a>
+                        <a href="All%20chapters/5.-Grade5-Simple-Machines_1.html" class="view-link">View Chapter →</a>
+                        <div class="download-buttons">
+                            <a href="pdf/Simple&20Machines.pdf" class="download-btn pdf" download>
+                                📄 Download PDF
+                            </a>
+                            <a href="pps/Simple&20Machines.ppsx" class="download-btn ppsx" download>
+                                📊 Download PPSX
+                            </a>
+                        </div>
                     </div>
 
                     <div class="carousel-card">
                         <div style="font-size: 48px; margin-bottom: 16px;">🦴</div>
                         <h3>Skeletal System</h3>
                         <p>Learn about the amazing framework of bones that supports and protects your body.</p>
-                        <a href="All%20chapters/6.-Grade-5-Human-Body-Skeletal-System.html">Start Learning →</a>
+                        <a href="All%20chapters/6.-Grade-5-Human-Body-Skeletal-System.html" class="view-link">View Chapter →</a>
+                        <div class="download-buttons">
+                            <a href="pdf/Skeletal%20System.pdf" class="download-btn pdf" download>
+                                📄 Download PDF
+                            </a>
+                            <a href="pps/Skeletal%20System.ppsx" class="download-btn ppsx" download>
+                                📊 Download PPSX
+                            </a>
+                        </div>
                     </div>
 
                     <div class="carousel-card">
                         <div style="font-size: 48px; margin-bottom: 16px;">🧠</div>
                         <h3>Nervous System</h3>
                         <p>Explore how your brain and nerves control everything you think, feel, and do.</p>
-                        <a href="All%20chapters/7.-Grade5-Human-Body-Nervous-System.html">Start Learning →</a>
+                        <a href="All%20chapters/7.-Grade5-Human-Body-Nervous-System.html" class="view-link">View Chapter →</a>
+                        <div class="download-buttons">
+                            <a href="pdf/Nervous%20System.pdf" class="download-btn pdf" download>
+                                📄 Download PDF
+                            </a>
+                            <a href="pps/Nervous%20System.ppsx" class="download-btn ppsx" download>
+                                📊 Download PPSX
+                            </a>
+                        </div>
                     </div>
 
                     <div class="carousel-card">
                         <div style="font-size: 48px; margin-bottom: 16px;">⚗️</div>
                         <h3>Elements & Compounds</h3>
                         <p>Dive into the building blocks of matter and understand what everything is made of.</p>
-                        <a href="All%20chapters/8.-Grade5-Elements-and-Compounds.html">Start Learning →</a>
+                        <a href="All%20chapters/8.-Grade5-Elements-and-Compounds.html" class="view-link">View Chapter →</a>
+                        <div class="download-buttons">
+                            <a href="pdf/Elements%20&%20Compounds.pdf" class="download-btn pdf" download>
+                                📄 Download PDF
+                            </a>
+                            <a href="pps/Elements%20&%20Compounds.ppsx" class="download-btn ppsx" download>
+                                📊 Download PPSX
+                            </a>
+                        </div>
                     </div>
 
                     <div class="carousel-card">
                         <div style="font-size: 48px; margin-bottom: 16px;">🐠</div>
                         <h3>Aquatic Animals</h3>
                         <p>Discover the incredible creatures that live in oceans, rivers, and lakes around the world.</p>
-                        <a href="All%20chapters/9.-Grade5-Animals-That-Live-In-Water.html">Start Learning →</a>
+                        <a href="All%20chapters/9.-Grade5-Animals-That-Live-In-Water.html" class="view-link">View Chapter →</a>
+                        <div class="download-buttons">
+                            <a href="pdf/Aquatic%20Animals.pdf" class="download-btn pdf" download>
+                                📄 Download PDF
+                            </a>
+                            <a href="pps/Aquatic%20Animals.ppsx" class="download-btn ppsx" download>
+                                📊 Download PPSX
+                            </a>
+                        </div>
                     </div>
 
                 </div>
