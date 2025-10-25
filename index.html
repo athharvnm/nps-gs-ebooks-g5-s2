@@ -184,6 +184,15 @@
         .download-btn.ppsx:hover {
             border-color: #f39c12;
         }
+        
+        .download-btn.view {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .download-btn.view:hover {
+            border-color: #667eea;
+        }
 
         .view-link {
             display: inline-flex;
@@ -239,6 +248,10 @@
             .download-btn {
                 width: 100%;
                 justify-content: center;
+            }
+            
+            .download-buttons {
+                gap: 8px;
             }
         }
         
@@ -449,12 +462,12 @@
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon">🎯</div>
-                    <div class="stat-number">10</div>
+                    <div class="stat-number" id="downloadCount">0</div>
                     <div class="stat-label">Downloads</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon">⚡</div>
-                    <div class="stat-number">2</div>
+                    <div class="stat-number">3</div>
                     <div class="stat-label">Formats</div>
                 </div>
             </div>
@@ -682,6 +695,38 @@
             setTimeout(() => {
                 bar.style.width = randomProgress + '%';
             }, 500 + (index * 100));
+        });
+        
+        // Real download counter using localStorage
+        const STORAGE_KEY = 'nps_download_count';
+        
+        // Get current download count
+        function getDownloadCount() {
+            return parseInt(localStorage.getItem(STORAGE_KEY) || '0');
+        }
+        
+        // Update download count
+        function incrementDownloadCount() {
+            const currentCount = getDownloadCount();
+            const newCount = currentCount + 1;
+            localStorage.setItem(STORAGE_KEY, newCount.toString());
+            updateDownloadDisplay();
+        }
+        
+        // Update the display
+        function updateDownloadDisplay() {
+            const count = getDownloadCount();
+            document.getElementById('downloadCount').textContent = count;
+        }
+        
+        // Initialize display on page load
+        updateDownloadDisplay();
+        
+        // Track all download buttons
+        document.querySelectorAll('.download-btn[download]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                incrementDownloadCount();
+            });
         });
     </script>
 </body>
