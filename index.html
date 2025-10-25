@@ -251,73 +251,7 @@
         }
         
         /* Stats Section Styling */
-        .stats-section {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%) !important;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 24px;
-            margin-top: 32px;
-        }
-        
-        .stat-card {
-            background: rgba(30, 41, 59, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 32px 24px;
-            text-align: center;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--primary-gradient);
-            transform: scaleX(0);
-            transition: var(--transition);
-        }
-        
-        .stat-card:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-8px) scale(1.05);
-            border-color: rgba(102, 126, 234, 0.4);
-            box-shadow: 0 16px 32px rgba(102, 126, 234, 0.2);
-        }
-        
-        .stat-icon {
-            font-size: 48px;
-            margin-bottom: 16px;
-            animation: float1 3s ease-in-out infinite;
-        }
-        
-        .stat-number {
-            font-size: 48px;
-            font-weight: 800;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
-        }
-        
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 16px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        /* REMOVED .stats-section CSS, but keeping placeholders for other sections */
         
         /* Search Bar Styling - HIDE SEARCH */
         .search-container {
@@ -432,28 +366,6 @@
                 Click on any chapter below to start your learning journey through fascinating topics 
                 like simple machines, human anatomy, chemistry, and marine biology!
             </p>
-            
-            </section>
-
-        <section class="stats-section">
-            <h3 style="text-align: center; margin-bottom: 32px;">📊 Your Learning Journey</h3>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon">📚</div>
-                    <div class="stat-number">5</div>
-                    <div class="stat-label">Chapters</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon">🎯</div>
-                    <div class="stat-number" id="downloadCount">0</div>
-                    <div class="stat-label">Downloads</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon">⚡</div>
-                    <div class="stat-number">3</div>
-                    <div class="stat-label">Formats</div>
-                </div>
-            </div>
         </section>
 
         <section>
@@ -647,9 +559,7 @@
             });
         });
         
-        // Removed search functionality script block as requested.
-        
-        // Simulate progress tracking (you can replace this with actual localStorage tracking)
+        // Simulate progress tracking
         const progressBars = document.querySelectorAll('.progress-bar');
         progressBars.forEach((bar, index) => {
             // Random progress for demo (replace with real tracking)
@@ -659,37 +569,52 @@
             }, 500 + (index * 100));
         });
         
-        // Real download counter using localStorage
-        const STORAGE_KEY = 'nps_download_count';
         
-        // Get current download count
-        function getDownloadCount() {
-            return parseInt(localStorage.getItem(STORAGE_KEY) || '0');
+        // SITE-LEVEL DOWNLOAD TRACKING (Requires server-side implementation)
+        
+        // Function to retrieve the current global count from the server.
+        function getGlobalDownloadCount() {
+            // NOTE: Replace the URL with your actual server endpoint to fetch the count
+            fetch('https://yourdomain.com/api/get-global-count') 
+                .then(response => response.json())
+                .then(data => {
+                    if (data.globalCount !== undefined) {
+                        // The element with id="downloadCount" was removed, so this line will throw an error
+                        // unless you remove it or place the ID elsewhere.
+                        // document.getElementById('downloadCount').textContent = data.globalCount; 
+                    }
+                })
+                .catch(error => console.error('Could not fetch global count:', error));
         }
         
-        // Update download count
+        // Function to increment the global count on the server.
         function incrementDownloadCount() {
-            const currentCount = getDownloadCount();
-            const newCount = currentCount + 1;
-            localStorage.setItem(STORAGE_KEY, newCount.toString());
-            updateDownloadDisplay();
+            // Send an asynchronous request to the server to increment the count
+            // NOTE: Replace the URL with your actual server endpoint to increment the count
+            fetch('https://yourdomain.com/api/track-download', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ action: 'download_increment' })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Since the display element was removed, we don't need to update the text content.
+            })
+            .catch(error => console.error('Error tracking download:', error));
         }
         
-        // Update the display
-        function updateDownloadDisplay() {
-            const count = getDownloadCount();
-            document.getElementById('downloadCount').textContent = count;
-        }
-        
-        // Initialize display on page load
-        updateDownloadDisplay();
-        
-        // Track all download buttons
+        // Track all download buttons using the new global function
         document.querySelectorAll('.download-btn[download]').forEach(btn => {
-            btn.addEventListener('click', () => {
+            btn.addEventListener('click', (e) => {
                 incrementDownloadCount();
             });
         });
+        
+        // NOTE: The JavaScript for fetching/displaying the global count is now obsolete
+        // since the display element was removed from the HTML. The increment logic is kept 
+        // in case you still want to track the clicks on the server silently.
     </script>
 </body>
 </html>
