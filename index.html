@@ -241,6 +241,154 @@
                 justify-content: center;
             }
         }
+        
+        /* Stats Section Styling */
+        .stats-section {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%) !important;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+        
+        .stat-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary-gradient);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+        
+        .stat-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-8px) scale(1.05);
+            border-color: rgba(102, 126, 234, 0.4);
+            box-shadow: 0 16px 32px rgba(102, 126, 234, 0.2);
+        }
+        
+        .stat-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            animation: float1 3s ease-in-out infinite;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Search Bar Styling */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 32px;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 16px 24px 16px 56px;
+            background: rgba(30, 41, 59, 0.6);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            color: var(--text-primary);
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            pointer-events: none;
+        }
+        
+        /* Featured Badge */
+        .featured-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: linear-gradient(135deg, #f39c12 0%, #e74c3c 100%);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 10;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        /* Progress Indicator */
+        .chapter-progress {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-top: 16px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: var(--success-gradient);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+        
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -276,6 +424,40 @@
                 Click on any chapter below to start your learning journey through fascinating topics 
                 like simple machines, human anatomy, chemistry, and marine biology!
             </p>
+            
+            <!-- Search Bar -->
+            <div class="search-container">
+                <span class="search-icon">🔍</span>
+                <input 
+                    type="text" 
+                    class="search-input" 
+                    id="chapterSearch"
+                    placeholder="Search chapters... (e.g., 'machines' or 'nervous')"
+                    aria-label="Search chapters"
+                >
+            </div>
+        </section>
+
+        <!-- Chapter Stats Overview -->
+        <section class="stats-section">
+            <h3 style="text-align: center; margin-bottom: 32px;">📊 Your Learning Journey</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📚</div>
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Chapters</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-number">10</div>
+                    <div class="stat-label">Downloads</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⚡</div>
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Formats</div>
+                </div>
+            </div>
         </section>
 
         <!-- Modern Card Carousel for Chapters -->
@@ -291,10 +473,10 @@
                         <p>Discover how levers, pulleys, and gears make work easier in our everyday lives.</p>
                         <a href="All%20chapters/5.-Grade5-Simple-Machines_1.html" class="view-link">View Chapter →</a>
                         <div class="download-buttons">
-                            <a href="pdf/Simple%20Machines.pdf" class="download-btn pdf" download>
+                            <a href="pdf/5.-Grade5-Simple-Machines_1.pdf" class="download-btn pdf" download>
                                 📄 Download PDF
                             </a>
-                            <a href="pps/Simple%20Machines.ppsx" class="download-btn ppsx" download>
+                            <a href="pps/5.-Grade5-Simple-Machines_1.ppsx" class="download-btn ppsx" download>
                                 📊 Download PPSX
                             </a>
                         </div>
@@ -306,10 +488,10 @@
                         <p>Learn about the amazing framework of bones that supports and protects your body.</p>
                         <a href="All%20chapters/6.-Grade-5-Human-Body-Skeletal-System.html" class="view-link">View Chapter →</a>
                         <div class="download-buttons">
-                            <a href="pdf/Skeletal%20System.pdf" class="download-btn pdf" download>
+                            <a href="pdf/6.-Grade-5-Human-Body-Skeletal-System.pdf" class="download-btn pdf" download>
                                 📄 Download PDF
                             </a>
-                            <a href="pps/Skeletal%20System.ppsx" class="download-btn ppsx" download>
+                            <a href="pps/6.-Grade-5-Human-Body-Skeletal-System.ppsx" class="download-btn ppsx" download>
                                 📊 Download PPSX
                             </a>
                         </div>
@@ -321,10 +503,10 @@
                         <p>Explore how your brain and nerves control everything you think, feel, and do.</p>
                         <a href="All%20chapters/7.-Grade5-Human-Body-Nervous-System.html" class="view-link">View Chapter →</a>
                         <div class="download-buttons">
-                            <a href="pdf/Nervous%20System.pdf" class="download-btn pdf" download>
+                            <a href="pdf/7.-Grade5-Human-Body-Nervous-System.pdf" class="download-btn pdf" download>
                                 📄 Download PDF
                             </a>
-                            <a href="pps/Nervous%20System.ppsx" class="download-btn ppsx" download>
+                            <a href="pps/7.-Grade5-Human-Body-Nervous-System.ppsx" class="download-btn ppsx" download>
                                 📊 Download PPSX
                             </a>
                         </div>
@@ -336,10 +518,10 @@
                         <p>Dive into the building blocks of matter and understand what everything is made of.</p>
                         <a href="All%20chapters/8.-Grade5-Elements-and-Compounds.html" class="view-link">View Chapter →</a>
                         <div class="download-buttons">
-                            <a href="pdf/Elements%20&%20Compounds.pdf" class="download-btn pdf" download>
+                            <a href="pdf/8.-Grade5-Elements-and-Compounds.pdf" class="download-btn pdf" download>
                                 📄 Download PDF
                             </a>
-                            <a href="pps/Elements%20&%20Compounds.ppsx" class="download-btn ppsx" download>
+                            <a href="pps/8.-Grade5-Elements-and-Compounds.ppsx" class="download-btn ppsx" download>
                                 📊 Download PPSX
                             </a>
                         </div>
@@ -351,10 +533,10 @@
                         <p>Discover the incredible creatures that live in oceans, rivers, and lakes around the world.</p>
                         <a href="All%20chapters/9.-Grade5-Animals-That-Live-In-Water.html" class="view-link">View Chapter →</a>
                         <div class="download-buttons">
-                            <a href="pdf/Aquatic%20Animals.pdf" class="download-btn pdf" download>
+                            <a href="pdf/9.-Grade5-Animals-That-Live-In-Water.pdf" class="download-btn pdf" download>
                                 📄 Download PDF
                             </a>
-                            <a href="pps/Aquatic%20Animals.ppsx" class="download-btn ppsx" download>
+                            <a href="pps/9.-Grade5-Animals-That-Live-In-Water.ppsx" class="download-btn ppsx" download>
                                 📊 Download PPSX
                             </a>
                         </div>
@@ -471,7 +653,36 @@
                 }
             });
         });
+        
+        // Search functionality
+        const searchInput = document.getElementById('chapterSearch');
+        const cards = document.querySelectorAll('.carousel-card');
+        
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            cards.forEach(card => {
+                const chapterData = card.getAttribute('data-chapter');
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                
+                if (chapterData.includes(searchTerm) || title.includes(searchTerm) || description.includes(searchTerm)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+        
+        // Simulate progress tracking (you can replace this with actual localStorage tracking)
+        const progressBars = document.querySelectorAll('.progress-bar');
+        progressBars.forEach((bar, index) => {
+            // Random progress for demo (replace with real tracking)
+            const randomProgress = Math.floor(Math.random() * 100);
+            setTimeout(() => {
+                bar.style.width = randomProgress + '%';
+            }, 500 + (index * 100));
+        });
     </script>
 </body>
 </html>
-
